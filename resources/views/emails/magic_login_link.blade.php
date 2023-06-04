@@ -1,7 +1,7 @@
 <x-mail::message>
 # Your magin login link
 
-<x-mail::button :url="''">
+<x-mail::button :url="$url">
 Log in
 </x-mail::button>
 

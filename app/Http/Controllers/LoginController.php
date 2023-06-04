@@ -18,8 +18,15 @@ class LoginController extends Controller
 
     public function store(LoginRequest $request)
     {
-        Mail::to($request->email)->send(new MagicLoginLink());
+        Mail::to($request->email)->send(new MagicLoginLink($request->email));
 
         return back()->with('success', 'Magic login link has been send in your email.');
+    }
+
+    public function session(User $user)
+    {
+        auth()->login($user);
+
+        return redirect()->route('home');
     }
 }
